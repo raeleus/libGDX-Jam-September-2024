@@ -6,6 +6,7 @@ dependencies {
   api "com.github.raeleus.TenPatch:tenpatch:$tenPatchVersion"
   api "com.github.raeleus.stripe:stripe:$stripeVersion"
   api "com.github.raeleus:game-jolt-api:$gameJoltApiVersion"
+  api "com.github.tommyettinger:regexodus:$regExodusVersion"
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
