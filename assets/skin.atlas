@@ -1,0 +1,48 @@
+
+skin.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+white-pixel
+  rotate: false
+  xy: 508, 506
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 1, 423
+  size: 94, 33
+  orig: 94, 33
+  offset: 0, 0
+  index: -1
+dialog
+  rotate: false
+  xy: 1, 322
+  size: 91, 99
+  orig: 91, 99
+  offset: 0, 0
+  index: -1
+divider
+  rotate: false
+  xy: 1, 458
+  size: 107, 2
+  orig: 107, 2
+  offset: 0, 0
+  index: -1
+font
+  rotate: false
+  xy: 1, 462
+  size: 505, 45
+  orig: 505, 45
+  offset: 0, 0
+  index: -1
+textfield
+  rotate: false
+  xy: 1, 289
+  size: 84, 31
+  orig: 84, 31
+  offset: 0, 0
+  index: -1
