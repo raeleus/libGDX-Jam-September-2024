@@ -49,6 +49,9 @@ public class Core extends ApplicationAdapter {
 
     @Override
     public void create() {
+        var music = Gdx.audio.newMusic(Gdx.files.internal("bg.mp3"));
+        music.setLooping(true);
+        music.play();
         gj = new GameJoltApi();
         skin = new Skin(Gdx.files.internal("skin.json"));
         viewport = new ScreenViewport();
