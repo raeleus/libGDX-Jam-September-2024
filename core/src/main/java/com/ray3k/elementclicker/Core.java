@@ -108,6 +108,7 @@ public class Core extends ApplicationAdapter {
         var textButton = new TextButton("UPLOAD SCORE", skin);
         statsGroup.addActor(textButton);
         onChange(textButton, () -> {
+            playSound("Blip_Select2.mp3");
             showScoreDialog();
         });
 
@@ -128,6 +129,7 @@ public class Core extends ApplicationAdapter {
 
         onChange(textButton, () -> {
             if (!clickable) return;
+            elementSound(element);
             resource.quantity++;
             updateElementText(textButton, resource);
         });
@@ -163,6 +165,7 @@ public class Core extends ApplicationAdapter {
 
                 var result = Resources.combine(resource, payloadResource);
                 if (result != null) {
+                    elementSound(result);
                     if (!unlocks.contains(result, false)) unlocks.add(result);
                     resource.quantity--;
                     payloadResource.quantity--;
@@ -208,6 +211,7 @@ public class Core extends ApplicationAdapter {
 
         onChange(textButton, () -> {
             if (gold >= autoClicker.cost) {
+                playSound("Pickup_Coin.mp3");
                 autoClicker.rate++;
                 gold -= autoClicker.cost;
                 autoClicker.cost *= 1.5;
@@ -270,6 +274,7 @@ public class Core extends ApplicationAdapter {
         demandGroup.addActor(textButton);
         onChange(textButton, () -> {
             if (demand.resource.quantity >= demand.quantity) {
+                playSound("Pickup_Coin.mp3");
                 textButton.remove();
                 Resources.demands.removeValue(demand, true);
                 demand.click();
@@ -356,6 +361,7 @@ public class Core extends ApplicationAdapter {
         var textButton = new TextButton("OK", skin);
         table.add(textButton);
         onChange(textButton, () -> {
+            playSound("Blip_Select2.mp3");
             submitScore(textField.getText(), goldHistory);
             popTable.hide();
         });
@@ -363,6 +369,7 @@ public class Core extends ApplicationAdapter {
         textButton = new TextButton("Cancel", skin);
         table.add(textButton);
         onChange(textButton, () -> {
+            playSound("Blip_Select2.mp3");
             popTable.hide();
         });
 
@@ -372,5 +379,159 @@ public class Core extends ApplicationAdapter {
 
     public void submitScore(String name, long score) {
         gj.addGuestScore(gameID, key, name, score);
+    }
+
+    public static void playSound(String soundName) {
+        var sound = Gdx.audio.newSound(Gdx.files.internal(soundName));
+        sound.play();
+    }
+
+    public static void elementSound(String element) {
+        switch (element) {
+            case "fire":
+                playSound("Randomize2.mp3");
+                break;
+            case "water":
+                playSound("Hit_Hurt21.mp3");
+                break;
+            case "earth":
+                playSound("Hit_Hurt14.mp3");
+                break;
+            case "air":
+                playSound("Jump3.mp3");
+                break;
+            case "steam":
+                playSound("Jump5.mp3");
+                break;
+            case "rain":
+                playSound("Mutation2.mp3");
+                break;
+            case "mud":
+                playSound("Explosion2.mp3");
+                break;
+            case "smoke":
+                playSound("Laser_Shoot4.mp3");
+                break;
+            case "lava":
+                playSound("Randomize3.mp3");
+                break;
+            case "dust":
+                playSound("Randomize4.mp3");
+                break;
+            case "ice":
+                playSound("Randomize8.mp3");
+                break;
+            case "plasma":
+                playSound("Laser_Shoot23.mp3");
+                break;
+            case "tornado":
+                playSound("Explosion2.mp3");
+                break;
+            case "stone":
+                playSound("Explosion6.mp3");
+                break;
+            case "sleet":
+                playSound("Explosion12.mp3");
+                break;
+            case "brimstone":
+                playSound("Explosion10.mp3");
+                break;
+            case "explosion":
+                playSound("Explosion6.mp3");
+                break;
+            case "metal":
+                playSound("Hit_Hurt28.mp3");
+                break;
+            case "bullet":
+                playSound("Laser_Shoot4.mp3");
+                break;
+            case "raygun":
+                playSound("Laser_Shoot6.mp3");
+                break;
+            case "plant":
+                playSound("Jump5.mp3");
+                break;
+            case "wood":
+                playSound("Powerup2.mp3");
+                break;
+            case "paper":
+                playSound("Powerup3.mp3");
+                break;
+            case "money":
+                playSound("Powerup4.mp3");
+                break;
+            case "coal":
+                playSound("Explosion6.mp3");
+                break;
+            case "poison":
+                playSound("Hit_Hurt28.mp3");
+                break;
+            case "gas":
+                playSound("Hit_Hurt14.mp3");
+                break;
+            case "boulder":
+                playSound("Hit_Hurt25.mp3");
+                break;
+            case "alloy":
+                playSound("Laser_Shoot23.mp3");
+                break;
+            case "electricity":
+                playSound("Pickup_Coin9.mp3");
+                break;
+            case "robot":
+                playSound("Blip_Select3.mp3");
+                break;
+            case "life":
+                playSound("Powerup3.mp3");
+                break;
+            case "forest":
+                playSound("Powerup4.mp3");
+                break;
+            case "wildfire":
+                playSound("Randomize2.mp3");
+                break;
+            case "human":
+                playSound("Jump5.mp3");
+                break;
+            case "murder":
+                playSound("Laser_Shoot23.mp3");
+                break;
+            case "war":
+                playSound("Mutation2.mp3");
+                break;
+            case "apocalypse":
+                playSound("Mutation1.mp3");
+                break;
+            case "baby":
+                playSound("Blip_Select2.mp3");
+                break;
+            case "farm":
+                playSound("Hit_Hurt25.mp3");
+                break;
+            case "mine":
+                playSound("Powerup.mp3");
+                break;
+            case "capitalism":
+                playSound("Randomize2.mp3");
+                break;
+            case "airplane":
+                playSound("Randomize2.mp3");
+                break;
+            case "predator":
+                playSound("Randomize4.mp3");
+                break;
+            case "military industrial complex":
+                playSound("Randomize8.mp3");
+                break;
+            case "franchise":
+                playSound("Pickup_Coin.mp3");
+                break;
+            case "nuke":
+                playSound("Randomize3.mp3");
+                break;
+            default:
+                playSound("Blip_Select.mp3");
+                break;
+        }
     }
 }

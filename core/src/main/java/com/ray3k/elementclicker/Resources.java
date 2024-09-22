@@ -32,10 +32,10 @@ public class Resources {
         resources.add(new Resource("metal"));//stone + fire
         resources.add(new Resource("bullet"));//metal + smoke
         resources.add(new Resource("raygun"));//plasma + bullet
-        resources.add(new Resource("plant"));//earth + water
+        resources.add(new Resource("plant"));//dust + water
         resources.add(new Resource("wood"));//earth + plant
         resources.add(new Resource("paper"));//wood + metal
-        resources.add(new Resource("money"));//human + paper
+        resources.add(new Resource("money"));//paper + paper
         resources.add(new Resource("coal"));//fire + wood
         resources.add(new Resource("poison"));//plant + plant
         resources.add(new Resource("gas"));//poison + air
@@ -80,10 +80,10 @@ public class Resources {
         createAutoClicker("stone", "fire", "metal", 300, 2);
         createAutoClicker("metal", "smoke", "bullet", 400, 3);
         createAutoClicker("plasma", "bullet", "raygun", 400, 3);
-        createAutoClicker("earth", "water", "plant", 300, 2);
+        createAutoClicker("dust", "water", "plant", 300, 2);
         createAutoClicker("earth", "plant", "wood", 300, 2);
         createAutoClicker("wood", "metal", "paper", 400, 3);
-        createAutoClicker("human", "paper", "money", 400, 3);
+        createAutoClicker("paper", "paper", "money", 400, 3);
         createAutoClicker("wood", "fire", "coal", 300, 2);
         createAutoClicker("plant", "plant", "poison", 400, 3);
         createAutoClicker("poison", "air", "gas", 500, 4);
@@ -94,7 +94,7 @@ public class Resources {
         createAutoClicker("electricity", "water", "life", 300, 2);
         createAutoClicker("wood", "wood", "forest", 400, 3);
         createAutoClicker("forest", "fire", "wildfire", 500, 4);
-        createAutoClicker("life", "earth", "human", 600, 5);
+        createAutoClicker("life", "earth", "human", 600, 4);
         createAutoClicker("human", "bullet", "murder", 700, 5);
         createAutoClicker("murder", "earth", "war", 800, 5);
         createAutoClicker("war", "war", "apocalypse", 900, 5);
@@ -151,7 +151,7 @@ public class Resources {
         else if (temp.contains("fire", false) && temp.contains("air", false)) return "smoke";
         else if (temp.contains("fire", false) && temp.contains("earth", false)) return "lava";
         else if (temp.contains("air", false) && temp.contains("earth", false)) return "dust";
-        else if (temp.contains("water", false) && temp.contains("water", false)) return "ice";
+        else if (resource1.name.equals("water") && resource1 == resource2) return "ice";
         else if (resource1.name.equals("fire") && resource1 == resource2) return "plasma";
         else if (resource1.name.equals("air") && resource1 == resource2) return "tornado";
         else if (resource1.name.equals("earth") && resource1 == resource2) return "stone";
@@ -161,14 +161,14 @@ public class Resources {
         else if (temp.contains("stone", false) && temp.contains("fire", false)) return "metal";
         else if (temp.contains("metal", false) && temp.contains("smoke", false)) return "bullet";
         else if (temp.contains("plasma", false) && temp.contains("bullet", false)) return "raygun";
-        else if (temp.contains("earth", false) && temp.contains("water", false)) return "plant";
+        else if (temp.contains("dust", false) && temp.contains("water", false)) return "plant";
         else if (temp.contains("earth", false) && temp.contains("plant", false)) return "wood";
         else if (temp.contains("wood", false) && temp.contains("metal", false)) return "paper";
-        else if (temp.contains("human", false) && temp.contains("paper", false)) return "money";
+        else if (temp.contains("paper", false) && temp.contains("paper", false)) return "money";
         else if (temp.contains("wood", false) && temp.contains("fire", false)) return "coal";
         else if (resource1.name.equals("plant") && resource1 == resource2) return "poison";
         else if (temp.contains("poison", false) && temp.contains("air", false)) return "gas";
-        else if (temp.contains("stone", false) && temp.contains("stone", false)) return "boulder";
+        else if (resource1.name.equals("stone") && resource1 == resource2) return "boulder";
         else if (resource1.name.equals("metal") && resource1 == resource2) return "alloy";
         else if (temp.contains("steam", false) && temp.contains("fire", false)) return "electricity";
         else if (temp.contains("electricity", false) && temp.contains("metal", false)) return "robot";
@@ -180,6 +180,14 @@ public class Resources {
         else if (temp.contains("murder", false) && temp.contains("earth", false)) return "war";
         else if (resource1.name.equals("war") && resource1 == resource2) return "apocalypse";
         else if (resource1.name.equals("human") && resource1 == resource2) return "baby";
+        else if (temp.contains("plant", false) && temp.contains("rain", false)) return "farm";
+        else if (resource1.name.equals("coal") && resource1 == resource2) return "mine";
+        else if (resource1.name.equals("money") && resource1 == resource2) return "capitalism";
+        else if (temp.contains("alloy", false) && temp.contains("air", false)) return "airplane";
+        else if (temp.contains("forest", false) && temp.contains("raygun", false)) return "predator";
+        else if (temp.contains("capitalism", false) && temp.contains("war", false)) return "military industrial complex";
+        else if (temp.contains("predator", false) && temp.contains("capitalism", false)) return "franchise";
+        else if (temp.contains("airplane", false) && temp.contains("explosion", false)) return "nuke";
 
         return null;
     }
